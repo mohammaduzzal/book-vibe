@@ -1,6 +1,7 @@
 import { rankings } from 'match-sorter';
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { addToStoredReadList, addToStoredWishedList } from '../../Utility/AddToDB';
 
 const BookDetails = () => {
     const {bookId} = useParams()
@@ -11,7 +12,19 @@ const BookDetails = () => {
     console.log(data);
     const book = data.find(book => book.bookId === id)
     // console.log(book);
-    const {yearOfPublishing,publisher,tags,category,totalPages,review,image,author,bookName,rating} = book
+    const {yearOfPublishing,publisher,tags,category,totalPages,review,image,author,bookName,rating} =book ;
+    
+    const handleMarkAsRead = (id) =>{
+    addToStoredReadList(id)
+
+    }
+    const handleAtToTheWishedList = id =>{
+        addToStoredWishedList(id)
+    }
+
+
+
+
     return (
         <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row">
@@ -44,8 +57,8 @@ const BookDetails = () => {
       </div>
 
       <div className='space-x-3 mt-5 mb-5'>
-      <button className="btn btn-accent btn-outline text-white">Read</button>
-      <button className="btn btn-accent text-white">Wishlist</button>
+      <button   onClick={()=>handleMarkAsRead(bookId)} className="btn btn-accent btn-outline text-white">Mark As Read</button>
+      <button onClick={()=> addToStoredWishedList(bookId)} className="btn btn-accent text-white"> Add To The Wishlist</button>
       </div>
     </div>
   </div>
