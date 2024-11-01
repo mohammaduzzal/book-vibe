@@ -39,7 +39,7 @@ console.log(allBooks);
     </TabList>
 
     <TabPanel>
-      <h2>book i read : {readBook.length}</h2>
+      <h2>book i Read : {readBook.length}</h2>
       {
         readBook.map(book => <Book key={book.bookId} book={book}></Book>)
       }
