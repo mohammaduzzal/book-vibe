@@ -52,4 +52,4 @@ const addToStoredWishedList = (id) =>{
     }
 }
 
-export { addToStoredReadList, addToStoredWishedList }
+export { addToStoredReadList, addToStoredWishedList,getStoredReadList,getStoredWishedList }
